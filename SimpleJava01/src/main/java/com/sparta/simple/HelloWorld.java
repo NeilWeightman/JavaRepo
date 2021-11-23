@@ -1,20 +1,32 @@
 package com.sparta.simple;
 
 public class HelloWorld {
-    public enum Months {JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE,
-                        JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER};
+    public enum Months {JANUARY(10), FEBRUARY(20), MARCH(30),
+                        APRIL(40), MAY(50), JUNE(60),
+                        JULY(70), AUGUST(80), SEPTEMBER(90),
+                        OCTOBER(100), NOVEMBER(110), DECEMBER(120);
+        private int monthIndex;
+        Months(int monthIndex){
+            this.monthIndex = monthIndex; // initialising the instance variable
+        }
+        public int getMonthIndex() {
+            return monthIndex;
+        }
+    }
+
     public static void main(String[] args) {
         simpleLoop(args);
         int myArray[] = {123, 234, 345, 456};
         Summer theSummer = new Summer();
         System.out.println(theSummer.sumArray(myArray));
         Months theMonth = Months.JULY;
-        if(theMonth.equals(Months.DECEMBER))
+        if(theMonth.equals(Months.JULY))
             System.out.println(monthName(theMonth));
     }
 
     private static String monthName(Months monthIndex) {
-        System.out.println(monthIndex.toString());
+        System.out.println(monthIndex.ordinal());
+        System.out.println(monthIndex.getMonthIndex());
         switch(monthIndex){
             case JANUARY: return "January";
             case FEBRUARY: return "February";
