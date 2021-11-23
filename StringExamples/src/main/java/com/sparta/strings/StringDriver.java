@@ -1,5 +1,7 @@
 package com.sparta.strings;
 
+import java.util.HexFormat;
+
 public class StringDriver {
     public static void main(String[] args) {
         String s = "Hello, world!";
@@ -17,6 +19,12 @@ public class StringDriver {
         sb.insert(5, ", ");
         System.out.println(sb);
 
+        String fullName = sb.toString();
+        fullName = fullName.replace('Y', 'J');
+        System.out.println(fullName);
+        System.out.println(fullName.substring(5, 8));
+        System.out.println(String.valueOf(123.456f));
+
 //        yefri = yefri.concat(" Velasquez");
 //        System.out.println(yefri);
         StringBuilder result = new StringBuilder("-");
@@ -30,5 +38,20 @@ public class StringDriver {
         if(myNumber.matches("[0-9]{5}\s*[0-9]{3}\s*[0-9]{3}")){
             System.out.println("Phone number found");
         }
+        StringDriver d = new StringDriver();
+        System.out.println(d);
+        HexFormat fmt = HexFormat.of();
+        System.out.println(fmt.toHexDigits(d.hashCode()));
+
+        String allNames = "Anthony, Yefri, George, Kamil, Talal, Alex, Konrad, Pruthvi, " +
+                "Nikolaos, Ishmael, Jakub, Mihai, Ed, Mark. Ignas, Leo, Ria";
+
+        for (String nextName: allNames.split("[,.] "))
+            System.out.println(nextName);
+
+    }
+
+    public String toString() {
+        return "StringDriver{This is my lovely class}";
     }
 }
