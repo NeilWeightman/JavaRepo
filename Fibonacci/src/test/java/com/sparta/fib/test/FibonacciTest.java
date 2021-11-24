@@ -1,33 +1,40 @@
 package com.sparta.fib.test;
 
 import com.sparta.fib.Fibonacci;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class FibonacciTest {
+    private static Fibonacci fib;
+
+    @BeforeAll
+    public static void setUpAll(){
+        fib = new Fibonacci();
+    }
+
+    @AfterEach
+    public void tearDown(){
+        System.out.println("That's another test done!");
+    }
+
     @DisplayName("Test the fibonacci sequence for 3 elements")
     @Test
     public void testFibForValueOfThree(){
         String expectedResult = "0, 1, 1, ";
-        Fibonacci fib = new Fibonacci();
         String actual = fib.fibonacci(3);
         assertEquals(expectedResult, actual);
     }
 
     @Test
     public void testFibForNegativeValue(){
-        Fibonacci fib = new Fibonacci();
         String result = fib.fibonacci(-1);
         assertEquals(null, result);
     }
 
     @Test
-    @Disabled
     public void testForZeroValue(){
-        fail();
+        String result = fib.fibonacci(0);
+        assertNull(result);
     }
 }
