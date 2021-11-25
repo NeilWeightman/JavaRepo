@@ -1,5 +1,7 @@
 package com.sparta.oop;
 
+import java.util.Random;
+
 public class SpartaShop {
     public static void main(String[] args) {
         Customer mark = new Customer(); // default constructor, zero-argument ctor
@@ -19,13 +21,22 @@ public class SpartaShop {
         System.out.println(alex);
         alex.sendEmail("You're fired!");
 
-        Person ria = new Customer(567, "Ria", "Janani", "ABCDEF");
+        Customer ria = new Customer(567, "Ria", "Janani", "ABCDEF");
         System.out.println(ria.getLastName());
         System.out.println(ria.getPostcode());
         System.out.println(ria.getClass().getName());
+        ria.sendEmail("Thanks for your order");
 
         Person pruthvi = new Customer();
         pruthvi.sendEmail("Hi!");
+
+        Person p;
+        Random r = new Random();
+        if(r.nextInt(10) > 5)
+            p = new Customer(567, "Ria", "Janani", "ABCDEF");
+        else
+            p = new Employee("Dev", "Alex", "Susanu", "POSTCODE");
+        p.sendEmail("This is a message for you");
 
     }
 }
