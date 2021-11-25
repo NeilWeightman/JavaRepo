@@ -1,6 +1,6 @@
 package com.sparta.oop;
 
-public class Person {
+public abstract class Person {
     private String postcode;
     private String firstName;
     private String lastName;
@@ -43,4 +43,6 @@ public class Person {
         // validate postcode
         this.postcode = postcode;
     }
+
+    public abstract void sendEmail(String message);
 }

@@ -1,6 +1,11 @@
 package com.sparta.oop;
 
-public class Customer extends Person {
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.io.Serializable;
+
+public class Customer extends Person implements Comparable<Customer>, Emailable, Serializable {
     private int customerId;
     private double accountBalance;
 
@@ -28,7 +33,7 @@ public class Customer extends Person {
     }
 
     public Customer(int customerId, String firstName, String lastName, String postcode){
-        super(firstName, lastName, postcode);
+        super(postcode, firstName, lastName);
         this.customerId = customerId;
     }
 
@@ -36,7 +41,29 @@ public class Customer extends Person {
         this(0, firstName, lastName, postcode); // ctor chaining
     }
 
-    public String convertToString(){
+    public String toString(){
         return "Customer #" + customerId + ": " + getFirstName() + " " + getLastName() + ", " + getPostcode();
+    }
+
+    @Override
+    public final void sendEmail(String message) {
+        System.out.println("Sending email to wonderful customer " + getFirstName() + " " + message);
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        return o.getCustomerId() - getCustomerId();
+//        return new Integer(getCustomerId()).compareTo(new Integer(o.getCustomerId()));
+//        return getLastName().compareTo(o.getLastName());
+    }
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+
     }
 }
