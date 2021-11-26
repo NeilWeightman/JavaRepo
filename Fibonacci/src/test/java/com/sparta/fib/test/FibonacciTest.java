@@ -1,16 +1,16 @@
 package com.sparta.fib.test;
 
-import com.sparta.fib.Fibonacci;
+import com.sparta.fib.FibonacciIterativeImpl;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FibonacciTest {
-    private static Fibonacci fib;
+    private static FibonacciIterativeImpl fib;
 
     @BeforeAll
     public static void setUpAll(){
-        fib = new Fibonacci();
+        fib = new FibonacciIterativeImpl();
     }
 
     @AfterEach
@@ -21,7 +21,7 @@ public class FibonacciTest {
     @DisplayName("Test the fibonacci sequence for 3 elements")
     @Test
     public void testFibForValueOfThree(){
-        String expectedResult = "0, 1, 1, ";
+        String expectedResult = "0, 1, 1";
         String actual = fib.fibonacci(3);
         assertEquals(expectedResult, actual);
     }
