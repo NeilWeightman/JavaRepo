@@ -14,7 +14,7 @@ public class ExceptionsDemo {
             someMethod();
             anotherMethod(scan.next());
         } catch (ParseException|ArithmeticException e) {
-            throw new SpartaException(e);
+            throw new SpartaException(e, 1234);
         } finally {
             System.out.println("Some code which is always executed");
         }
