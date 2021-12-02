@@ -3,7 +3,7 @@ package com.sparta;
 import java.util.Iterator;
 import java.util.Random;
 
-public class MyIterator implements Iterator<Integer> {
+public class MyIterator<T> implements Iterator<T> {
     private Random rand;
 
     public MyIterator() {
@@ -16,7 +16,7 @@ public class MyIterator implements Iterator<Integer> {
     }
 
     @Override
-    public Integer next() {
-        return rand.nextInt(1000);
+    public T next() {
+        return (T)((Integer)(rand.nextInt(1000)));
     }
 }

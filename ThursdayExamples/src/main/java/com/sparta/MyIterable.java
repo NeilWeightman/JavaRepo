@@ -2,9 +2,9 @@ package com.sparta;
 
 import java.util.Iterator;
 
-public class MyIterable implements Iterable<Integer> {
+public class MyIterable<T> implements Iterable<T> {
     @Override
-    public Iterator<Integer> iterator() {
-        return new MyIterator();
+    public Iterator<T> iterator() {
+        return new MyIterator<T>();
     }
 }
