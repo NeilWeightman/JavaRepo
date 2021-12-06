@@ -1,8 +1,6 @@
 package com.sparta.io;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class BinaryFileIO {
     public static void readBinaryFile(String binaryFile){
@@ -20,8 +18,10 @@ public class BinaryFileIO {
     public static void copyBinaryFile(String binaryFile, String outFile){
         // try-with-resources
         // type of variable must be AutoCloseable
-        try (FileInputStream in = new FileInputStream(binaryFile);
-             FileOutputStream out = new FileOutputStream(outFile)) {
+        try (BufferedInputStream in
+                     = new BufferedInputStream(new FileInputStream(binaryFile));
+             BufferedOutputStream out
+                     = new BufferedOutputStream(new FileOutputStream(outFile))) {
             int theByte;
             while ((theByte = in.read()) != -1) { // -1 is EOF
                 System.out.print(Character.toChars(theByte));
